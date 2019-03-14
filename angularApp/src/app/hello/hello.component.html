@@ -1,0 +1,16 @@
+<p>
+  <b>Hi from hello.component.html :)</b>
+</p>
+
+<!-- Interpolation examples! -->
+{{ 5*2 }} <br/>
+{{ myVariable }} <br/> 
+{{ bitwiseOR }} <br/>
+
+<!-- <input type="text" [value]="myVariable" disabled={{myDisabledValue}}>: If
+I use this, is allways disable! you work with values -->
+
+<input type="text" [value]="myVariable" [disabled]="myDisabledValue"><!--: If
+I use this, is disable disable with conditions! you work with values -->
+
+<button (click)="callMyFunction()">Boton!!!</button>
