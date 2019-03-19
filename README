@@ -261,3 +261,158 @@ Para trabajr con valores en variables: [variable]="valor"
 2. In cosole $0.value -> "Pablo""
 
 Target (view) -> Source (codigo) -> ()
+
+Example:
+1. <button (click)="callMyFunction()">Boton!!!</button>
+2. callMyFunction() {
+    this.myDisabledValue = !this.myDisabledValue;//Togelet!!!
+    console.log("Boton!!!!");
+  }
+  In other words, with the methods (click), (over) ...
+
+Two way data binding:  
+View update javascript file and javascript file update view!! Data Binding!!! 
+1. Old fashion:
+1.1. Interpolation + event:
+  in html:
+    <input type="text" [value]="myMirrowVariable" (input)="updateValue($event)">
+    {{myMirrowVariable}}
+  in ts:
+    myMirrowVariable = "app";
+    updateValue(e) {
+      //Shows the events pro letter!
+      console.log(e);
+      this.myMirrowVariable = e.target.value;
+      console.log(this.myMirrowVariable);
+    }
+2. New alternative: use the FORMSMODULE blackbox from angular!!!   
+  <input type="text" [(ngModel)]="myMirrowVariable"> 
+{{myMirrowVariable}}
+  in app.module.ts:
+  import the module!! 
+  import { FormsModule } from '@angular/forms' --- because input is in a form!!!
+  imports: [
+    FormsModule
+  ]
+
+  Looping with *ngFor: see hello.component.html, hello.commponent.ts and helloComponent.css :) 
+
+  Services:
+
+  Where we put all methods to use in the Application: to fecht data, etc, Is a singleton.
+  1. To generate in console:
+  $ng generate service nameServices
+  2. In nameServices.ervices.ts create a methods... f.e. data for the last example
+  getData() {
+    return [
+      {
+        name: 'A',
+        online: true
+      },
+      {
+        name: 'B',
+        online: false
+      },
+      {
+        name: 'C',
+        online: true
+      },
+      {
+        name: 'D',
+        online: false
+      },
+      {
+        name: 'E',
+        online: true
+      }
+    ]
+  }
+  3. Where we will use services? all, but in this example in hello.component.ts -because
+  in our last example, we show it data in hello.component.html (and its show in application.commponent.html)
+  4. Inject the services in app.module.ts in provider (the services records will be available
+  for every component in the application):
+    import { RecordsService } from './records.service'
+    providers: [RecordsService]
+  5. In hello.component.ts we inject the service:
+    import { RecordsService } from '../records.service';
+    records = {};
+    constructor(private myFirstService : RecordsService) { 
+    }
+    ngOnInit() {
+    this.records = this.myFirstService.getData();//will give acces to our server
+  }
+  6. Para probar que service es un singleton, cree otra componente: totestservice, en donde
+  por medio de un metodo modifico los datos (en ts). Despues llamo a su html en App.COMPONENT!!!
+
+HTTP Request
+
+1. Import module in app.module.ts:
+  import { HttpClientModule } from '@angular/common/http'
+  imports: [
+    HttpClientModule
+  ]
+
+2. Make the server:
+  a. Copy data form records.service.ts
+  b. Do a php file in the folder of the application.
+    b.1. make test folder: mkdir test
+    b.2. create file in test folder: touch file.php
+    b.3. Paste data that we have: nano file.php and Paste
+    b.4. Put everyting as stream:
+      <?php
+
+          header('Access-Control-Allow-Origin: *');
+
+          header('Content-Type: application/json');
+      ?>
+      {
+        "data" : [
+          {
+            "name": "A",
+            "online": true
+          },
+          {
+            "name": "B",
+            "online": false
+          },
+          {
+            "name": "C",
+            "online": true
+          }
+        ]
+      }
+ 
+    b.5. start the server: php -S localhost:1234  //Simula una pagina web como servidor
+
+3. Inject the dependency in the service (records.service.ts):
+  import { HttpClient } from '@angular/common/http'
+  constructor(private http: HttpClient) { }
+
+4. use the http client to get the data in the service:
+
+  interface myData{
+    data: any; //Muy importante!!!
+  }
+
+  @Injectable({//Says that the server can be injectable with other classes
+    providedIn: 'root'
+  })
+  export class RecordsService {
+
+    constructor(private http: HttpClient) { }
+
+    datos = this.http.get<myData>('http://localhost:4321/file.php');
+
+    getData() {
+      return this.datos;
+    }
+
+    onDelete() {
+      this.datos = null;
+      return this.datos;
+    }
+  }
+
+
+
+

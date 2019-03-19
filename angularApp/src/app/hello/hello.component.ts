@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordsService } from '../records.service';
 
 @Component({
   selector: 'app-hello',
@@ -10,8 +11,10 @@ export class HelloComponent implements OnInit {
   myVariable = "Pablo";
   myDisabledValue = false;
   bitwiseOR = 2 | 5; // 010 | 101 -> 0 | 1 = 1 then 1 | 0 = 1 then 0 | 1 = 1 -> 111 
+  myMirrowVariable = "app";
+  records: any;
 
-  constructor() { 
+  constructor(private myFirstService : RecordsService) { 
     //setInterval(() => {
     //  this.myVariable = Math.random().toString();
     //  this.myDisabledValue = Math.random() > 0.5;//if(Math.random() > 0.5) this.myDisabledValue = true;
@@ -23,7 +26,40 @@ export class HelloComponent implements OnInit {
     console.log("Boton!!!!");
   }
 
+  //updateValue(e) {
+    //Shows the events pro letter!
+  //  console.log(e);
+  //  this.myMirrowVariable = e.target.value;
+  //  console.log(this.myMirrowVariable);
+  //}
+
+  /*records = [
+    {
+      name: 'A',
+      online: true
+    },
+    {
+      name: 'B',
+      online: false
+    },
+    {
+      name: 'C',
+      online: true
+    },
+    {
+      name: 'D',
+      online: false
+    },
+    {
+      name: 'E',
+      online: true
+    }
+  ]*/
+
   ngOnInit() {
+    if (this.myFirstService.getData() != null) {
+      this.myFirstService.getData().subscribe(d => this.records = d.data);
+    }
   }
 
 }

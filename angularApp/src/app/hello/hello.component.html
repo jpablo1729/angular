@@ -10,7 +10,30 @@
 <!-- <input type="text" [value]="myVariable" disabled={{myDisabledValue}}>: If
 I use this, is allways disable! you work with values -->
 
-<input type="text" [value]="myVariable" [disabled]="myDisabledValue"><!--: If
+<input type="text" [value]="myVariable" [disabled]="myDisabledValue"><br/> <!--: If
 I use this, is disable disable with conditions! you work with values -->
 
-<button (click)="callMyFunction()">Boton!!!</button>
+<button (click)="callMyFunction()">Boton!!!</button><br/> 
+
+<!--: 1. Binding source to view: [value]="myMirrowVariable" 
+2. Binding view to source: method (input): Every time that i wirte, then we have an imput event!!! -->
+<!--:<input type="text" [value]="myMirrowVariable" (input)="updateValue($event)">
+{{myMirrowVariable}}-->
+<input type="text" [(ngModel)]="myMirrowVariable"> <!--?what is ngmodel?-->
+{{myMirrowVariable}}
+
+<!--*ngFor-->
+<table>
+  <tr>
+    <td>Nr.</td>
+    <td>Name</td>
+    <td>Is online</td>
+  </tr>
+  <!--[ngClass]="{odd: oddRec, even: evenRec}": hace una clase even or odd :)-->
+  <tr *ngFor="let record of records; let myIndex = index; let evenRec = even; let oddRec = odd; let firstRecord = first; let lastRecord = last " [ngClass]="{odd: oddRec, even: evenRec, first: firstRecord, last: lastRecord}">
+    <td>{{myIndex + 1}}</td>
+    <td>{{record.name}}</td>
+    <td>{{record.online}}</td>
+  </tr>
+
+</table>
