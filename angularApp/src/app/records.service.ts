@@ -12,7 +12,7 @@ export class RecordsService {
 
   constructor(private http: HttpClient) { }
 
-  datos = this.http.get<myData>('http://localhost:4321/file.php');
+  datos = this.http.get<myData>('http://localhost:1729/file.php');
 
   getData() {
     return this.datos;
@@ -23,3 +23,4 @@ export class RecordsService {
     return this.datos;
   }
 }
+

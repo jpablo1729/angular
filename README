@@ -413,6 +413,24 @@ HTTP Request
     }
   }
 
+Configure Proxy for API calls:
 
+Angular 4200 -> makes an API call -> API Server 4321
+if call is valid ->
+Angular 4200 -> makes an API call to /api/* -> webpack dev server -> API Server 4321
 
+1. Go to package.json -> "sart": "ng serve --proxy-config proxyconfig.json"
+2. Create proxyconfig.json in angularApp (its a JSON object):
+{
+	"/api": {
+		"target": "http://localhost:4321",
+		"secure": false,
+		"changeOrigin": true
+	}
+}
+3. in console angularApp: $ npm start
+
+NOTA: HAY UN PROBLEMA ENORME CON ESTA LECTURA... ERROR 504!!!
+
+BASIC ROUTING
 
