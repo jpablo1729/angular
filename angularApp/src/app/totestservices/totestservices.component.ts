@@ -8,14 +8,16 @@ import { RecordsService } from '../records.service'
 })
 export class TotestservicesComponent implements OnInit {
 
+  title = 'angularApp'; 
+
   records: any;
 
   constructor(private myFirstService : RecordsService) { }
 
   ngOnInit() {
-    if (this.myFirstService.onDelete() != null) {
-        this.myFirstService.onDelete().subscribe(d => this.records = d.data);
-    }
+    //if (this.myFirstService.onDelete() != null) {
+    //    this.myFirstService.onDelete().subscribe(d => this.records = d.data);
+    //}
   }
 
 }

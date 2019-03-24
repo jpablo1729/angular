@@ -434,3 +434,26 @@ NOTA: HAY UN PROBLEMA ENORME CON ESTA LECTURA... ERROR 504!!!
 
 BASIC ROUTING
 
+1. Import the module and write the paths:
+
+import { RouterModule } from '@angular/router';
+imports: [
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: TotestservicesComponent
+
+      },
+      {
+        path: 'hello',
+        component: HelloComponent
+      }
+    ])
+
+2. Write in app.component.html:
+<router-outlet></router-outlet>
+
+3. The aplication should to jump between hello and totestservices:
+<a routerLink='' >Go to main</a> <--> <a routerLink='/hello' >Go to data</a>
+
+NOTE: the data will be loaded for component! not at start the application.
