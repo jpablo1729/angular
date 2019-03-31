@@ -457,3 +457,4 @@ imports: [
 <a routerLink='' >Go to main</a> <--> <a routerLink='/hello' >Go to data</a>
 
 NOTE: the data will be loaded for component! not at start the application.
+The path for the home is ''.
