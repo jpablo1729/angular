@@ -383,7 +383,7 @@ HTTP Request
       }
  
     b.5. start the server: php -S localhost:1234  //Simula una pagina web como servidor
-
+    NOTA: ver nota problema!!!
 3. Inject the dependency in the service (records.service.ts):
   import { HttpClient } from '@angular/common/http'
   constructor(private http: HttpClient) { }
@@ -432,6 +432,8 @@ Angular 4200 -> makes an API call to /api/* -> webpack dev server -> API Server 
 
 NOTA: HAY UN PROBLEMA ENORME CON ESTA LECTURA... ERROR 504!!!
 
+se puede solucionar iniciando el servidor php como: test$ php -S 0.0.0.0:1234
+
 BASIC ROUTING
 
 1. Import the module and write the paths:
@@ -459,14 +461,6 @@ imports: [
 NOTE: the data will be loaded for component! not at start the application.
 The path for the home is ''.
 
-LOGIN APP - PART 1
-
-1. Login component 
-2. Admiin component
-
-In Angular folder: $ng new loginApp. 
-Prepare login, admin and home component $ng g c login, adimn, home.
-Prepare the router $ng g service auth.
-Prepare the service - auth.
+LOGIN APP - PART 1, 2, 3, 4, 5 AND 6. See the videos.
 
 
