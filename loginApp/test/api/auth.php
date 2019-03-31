@@ -25,7 +25,7 @@ if(isset($_POST) && !empty($_POST)) {
     ?>
     {
         "success": false,
-        "message": "only POST acces accepted"
+        "secret": "only POST acces accepted"
     }
     <?php
 }

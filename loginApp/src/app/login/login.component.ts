@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service'; //Importa para injectar service
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthService } from '../auth.service'; //Importa para injectar service
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private Auth: AuthService) { } //Injecta AuthService como Auth
+  constructor(private Auth: AuthService,
+              private router: Router) { } //Injecta AuthService como Auth
 
   ngOnInit() {
   }
@@ -25,7 +27,9 @@ export class LoginComponent implements OnInit {
     //AuthService fue injectado, podemos usar sus methodos 
     this.Auth.getUserDetails(username, password).subscribe(data => {
       if(data.success) {
-        console.log('Redirect to the adminnistrator');
+        this.Auth.setLoggedInStatus(true);
+        this.router.navigate(['admin']);
+        console.log('Redirected to the adminnistrator');
       } else {
         window.alert(data.secret);
       }
