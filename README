@@ -458,3 +458,15 @@ imports: [
 
 NOTE: the data will be loaded for component! not at start the application.
 The path for the home is ''.
+
+LOGIN APP - PART 1
+
+1. Login component 
+2. Admiin component
+
+In Angular folder: $ng new loginApp. 
+Prepare login, admin and home component $ng g c login, adimn, home.
+Prepare the router $ng g service auth.
+Prepare the service - auth.
+
+
