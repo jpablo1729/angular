@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['admin']);
         console.log('Redirected to the adminnistrator');
       } else {
+        this.Auth.setLoggedInStatus(false);
         window.alert(data.secret);
+        this.router.navigate(['login']);
       }
       })
   } 
