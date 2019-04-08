@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
         window.alert(data.secret);
         this.router.navigate(['login']);
         this.Auth.setLoggedInStatus(false, 'false');
+        //or localStorage.removeItem('loggedIn');
       }
       })
   } 
