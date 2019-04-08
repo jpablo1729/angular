@@ -466,3 +466,27 @@ LOGIN APP - PART 1, 2, 3, 4, 5 AND 6. See the videos.
 NOTA:
 
 Servidor -> servicios -> componentes!!!!
+
+PERSISTENT LOGIN SESSION
+
+1. Angular GUI
+2. DB Request Cookies!!!!
+
+1. Angular GUI: 
+1.1. In service.out: private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
+hay un attibuto en dom (quizas?) que se llama localStorage. Del item tomamos el loggedIn
+Es un get desde el dom, entonces hay que parsearlo!!!
+
+1.2. Si esta logeado, en setLoggedIn ponemos el attributo como true:
+setLoggedInStatus(value: boolean) {
+    this.loggedInStatus = value;
+    localStorage.setItem('loggedIn', 'true');
+  }
+
+1.3 Y en isLoggedInStatus devolvemos: 
+get isLoggedInStatus() {
+    return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus);
+  } 
+
+2. DB Request Cookies!!!!
+   
