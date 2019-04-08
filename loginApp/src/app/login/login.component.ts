@@ -27,14 +27,13 @@ export class LoginComponent implements OnInit {
     //AuthService fue injectado, podemos usar sus methodos 
     this.Auth.getUserDetails(username, password).subscribe(data => {
       if(data.success) {
-        this.Auth.setLoggedInStatus(true, 'true');
+        this.Auth.setLoggedInStatus(true);
         this.router.navigate(['admin']);
         console.log('Redirected to the adminnistrator');
       } else {
         window.alert(data.secret);
         this.router.navigate(['login']);
-        this.Auth.setLoggedInStatus(false, 'false');
-        //or localStorage.removeItem('loggedIn');
+      
       }
       })
   } 
