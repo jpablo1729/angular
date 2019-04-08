@@ -489,4 +489,6 @@ get isLoggedInStatus() {
   } 
 
 2. DB Request Cookies!!!!
+
+If I delete the cookies, the point 1. does not work anymore!!!
    
