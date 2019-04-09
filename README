@@ -490,4 +490,10 @@ get isLoggedInStatus() {
 
 2. DB Request Cookies!!!!
 
-[TODO]!!! 
+Send request to server and ask if we are logged.
+If we are logged, loggedInStatus is true. If we are not, then
+a. We are not logged.
+b. We are but we refresh!!!
+
+1. auth.guard -> canActivate cover the cases!!!
+2. user.services
