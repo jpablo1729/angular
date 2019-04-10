@@ -4,7 +4,10 @@ import { HttpClient } from '@angular/common/http';
 interface myData {
   secret: string,
   success: boolean 
+}
 
+interface logout {
+  success: boolean
 }
 
 @Injectable({
@@ -16,6 +19,10 @@ export class UserService {
 
   getSomeData() {
     return this.http.get<myData>('/api/database.php');
+  }
+
+  logout() {
+    return  this.http.get<logout>('/api/logout.php');
   }
 
 }
