@@ -2,8 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 interface myData {
-  success: boolean,
-  secret: string    
+  success: boolean;
+  secret: string;
+}
+
+interface registration {
+  success: boolean;
 }
 
 @Injectable({
@@ -26,6 +30,13 @@ export class AuthService {
 
   getUserDetails(username, password) {
     return this.http.post<myData>('/api/auth.php', {
+      username,
+      password
+    });
+  }
+
+  registerUser(username, password) {
+    return this.http.post<registration>('/api/register', {
       username,
       password
     });
