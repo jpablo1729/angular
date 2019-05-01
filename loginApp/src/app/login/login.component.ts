@@ -11,19 +11,18 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private Auth: AuthService,
-              private router: Router) { } 
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   loginUser(event) {
-    event.preventDefault(); 
-    const target = event.target, 
-          username = target.querySelector('#username').value, 
-          password = target.querySelector('#password').value; 
-     
+    event.preventDefault();
+    const target = event.target;
+    const username = target.querySelector('#username').value;
+    const password = target.querySelector('#password').value;
     this.Auth.getUserDetails(username, password).subscribe(data => {
-      if(data.success) {
+      if (data.success) {
         this.Auth.setLoggedInStatus(true, 'true');
         this.router.navigate(['admin']);
         console.log('Redirected to the adminnistrator');
@@ -32,6 +31,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['login']);
         this.Auth.setLoggedInStatus(false, 'false');
       }
-    })
-  } 
+    });
+  }
 }

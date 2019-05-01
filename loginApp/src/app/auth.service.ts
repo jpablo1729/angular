@@ -11,7 +11,7 @@ interface myData {
 })
 export class AuthService {
 
-  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
+  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn')) || false;
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   get isLoggedInStatus() {
-    return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus);
+    return JSON.parse(localStorage.getItem('loggedIn')) || this.loggedInStatus;
   }
 
   getUserDetails(username, password) {
