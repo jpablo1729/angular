@@ -491,3 +491,39 @@ get isLoggedInStatus() {
 2. DB Request Cookies!!!!
 
 [TODO]!!! 
+
+COMO HACER UN SERVER EN NODEJS
+
+1. Ir a la carpeta Angular (hacer un servidor para todas las aplicaciones)
+2. Inicializar el servidor: $ npm init -y
+3. Inicializar express: $ npm i express --save
+
+Si arbimos package.json -> vemos la version de express que usamos
+
+4. Instalar body-parser (en la carpeta server): $ npm i body-parser --save 
+
+5. crear a index.js file (en la carpeta server) para inicializar el servidor
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+
+app.use(bodyParser.json())
+
+app.post('/api/register', (req, res) => {
+    console.log(req.body)
+})
+
+app.listen(1234, () => console.log('Server listening at 1234')) 
+
+6. Install nodemon (carpeta server): npm install -g nodemon. For info: https://nodemon.io/ 
+Cada cambio en el codigo, inicia el servidor!
+
+7. Start the server: $ nodemon index.js 
+
+NOTA: se habia iniciado otro servidor para test y los archivos php. En un futuro no usare
+php, por lo tanto, ese servidor despues de nodemon index.js start, NO FUNCIONA. Pues tiene 
+el mismo número 1234 del servidor para php.
+
+!!!! MONGODB (for registration pourposes) !!!!
+
