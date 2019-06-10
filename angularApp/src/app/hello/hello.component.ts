@@ -13,6 +13,8 @@ export class HelloComponent implements OnInit {
   bitwiseOR = 2 | 5; // 010 | 101 -> 0 | 1 = 1 then 1 | 0 = 1 then 0 | 1 = 1 -> 111 
   myMirrowVariable = "app";
   records: any;
+  i = 0;
+  pablos = Math.random();
 
   constructor(private myFirstService : RecordsService) { 
     //setInterval(() => {
@@ -56,10 +58,18 @@ export class HelloComponent implements OnInit {
     }
   ]*/
 
-  ngOnInit() {
-    if (this.myFirstService.getData() != null) {
-      this.myFirstService.getData().subscribe(d => this.records = d.data);
-    }
+  doSomeHeavyTask() {
+      this.i = this.i + 1,
+      console.log('called this', this.i );
   }
 
+  ngOnInit() {
+    //if (this.myFirstService.getData() != null) {
+    //  this.myFirstService.getData().subscribe(d => this.records = d.data);
+    //}
+    //setInterval(() => {
+    //  this.pablos = Math.random()
+    //}, 50);
+  }
+  
 }

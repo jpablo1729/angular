@@ -8,6 +8,7 @@ interface myData {
 
 interface registration {
   success: boolean;
+  message: string;
 }
 
 @Injectable({
@@ -28,16 +29,16 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('loggedIn')) || this.loggedInStatus;
   }
 
-  getUserDetails(username, password) {
-    return this.http.post<myData>('/api/auth.php', {
-      username,
+  getUserDetails(email, password) {
+    return this.http.post<myData>('/api/login', {
+      email,
       password
     });
   }
 
-  registerUser(username, password) {
+  registerUser(email, password) {
     return this.http.post<registration>('/api/register', {
-      username,
+      email,
       password
     });
   }

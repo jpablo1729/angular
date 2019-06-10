@@ -492,7 +492,7 @@ get isLoggedInStatus() {
 
 [TODO]!!! 
 
-COMO HACER UN SERVER EN NODEJS
+¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ COMO HACER UN SERVER EN NODEJS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 1. Ir a la carpeta Angular (hacer un servidor para todas las aplicaciones)
 2. Inicializar el servidor: $ npm init -y
@@ -527,3 +527,35 @@ el mismo número 1234 del servidor para php.
 
 !!!! MONGODB (for registration pourposes) !!!!
 
+1. Open the Terminal app and type brew update.
+2. After updating Homebrew brew install mongodb
+3. After downloading Mongo, create the “db” directory. This is where the Mongo data files will live. You can create the directory in the default location by running mkdir -p /data/db
+Make sure that the /data/db directory has the right permissions by running
+
+> sudo chown -R `id -un` /data/db
+> # Enter your password
+
+3. Run the Mongo daemon, in one of your terminal windows run mongod ($mongod). This should start the Mongo server.
+4. Run the Mongo shell, with the Mongo daemon running in one terminal, type mongo ($mongo) in another terminal window. This will run the Mongo shell which is an application to access data in MongoDB.
+5. To exit the Mongo shell run quit()
+6. To stop the Mongo daemon hit ctrl-c
+
+!!! MONGOOSE (IN THE SERVER FOLDER) !!!!
+
+1. $ npm i mongoose --save
+2. SETUP MONGOSSE DB CONTECTION IN THE INDEX.JS
+    const mongoose = require('mongoose')
+    mongoose.Promise = Promise
+    mongoose.connect('mongodb://localhost:27017/angulardb').then(()=>console.log('Mongoose up'))
+3. Se crea una carpeta models en server>models
+4. Se crea un schema en server>model>users: (Se crea UserSchema para la base de datos y se mapea a ts (todo desde ts en server>model>users). Mongo
+send data to mongoose mached as the schema and populate to ts)
+  const mongoose = require('mongoose')
+  const UserSchema = new mongoose.Schema({
+      email: String,
+      password: String,
+      quote: {type: String, default: "You do not have quote! Write something"}
+  })
+  const User = mongoose.model('User', UserSchema)
+  module.exports = User      
+4.   
